@@ -1,0 +1,16 @@
+---
+version: "3.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=13006
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Prowlarr:/config
+    ports:
+      - "5411:9696"
+    restart: unless-stopped

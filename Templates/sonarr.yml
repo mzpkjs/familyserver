@@ -1,0 +1,48 @@
+---
+version: "3.1"
+services:
+  sonarr-regular:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr-regular
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Sonarr (Regular):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Series:/tv
+    ports:
+      - "5321:8989"
+    restart: unless-stopped
+  sonarr-anime:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr-anime
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Sonarr (Anime):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Anime (Series):/tv
+    ports:
+      - "5322:8989"
+    restart: unless-stopped
+  sonarr-children_n_family:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr-children_n_family
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Sonarr (Children & Family):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Children & Family (Series):/tv
+    ports:
+      - "5323:8989"
+    restart: unless-stopped

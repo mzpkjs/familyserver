@@ -1,0 +1,17 @@
+---
+version: "3.1"
+services:
+  mylar3:
+    image: lscr.io/linuxserver/mylar3:latest
+    container_name: mylar3
+    environment:
+      - PUID=13005
+      - PGID=13000
+      - UMASK=002
+    volumes:
+      - /home/server/media-server/Configurations/Mylar3:/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Library/Comics:/comics
+    ports:
+      - "5351:8090"
+    restart: unless-stopped

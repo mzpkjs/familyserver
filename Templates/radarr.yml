@@ -1,0 +1,48 @@
+---
+version: "3.1"
+services:
+  radarr-regular:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr-regular
+    environment:
+      - PUID=13002
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Radarr (Regular):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Movies:/movies
+    ports:
+      - "5311:7878"
+    restart: unless-stopped
+  radarr-anime:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr-anime
+    environment:
+      - PUID=13002
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Radarr (Anime):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Anime (Movies):/movies
+    ports:
+      - "5312:7878"
+    restart: unless-stopped
+  radarr-children_n_family:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr-anime
+    environment:
+      - PUID=13002
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Radarr (Children & Family):/config
+      - /home/server/media-server/Storage/Downloads:/downloads
+      - /home/server/media-server/Storage/Media/Children & Family (Movies):/movies
+    ports:
+      - "5313:7878"
+    restart: unless-stopped

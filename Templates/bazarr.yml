@@ -1,0 +1,48 @@
+---
+version: "3.1"
+services:
+  bazarr-regular:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr-regular
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Bazarr (Regular):/config
+      - /home/server/media-server/Storage/Media/Movies:/movies
+      - /home/server/media-server/Storage/Media/Series:/tv
+    ports:
+      - "5331:6767"
+    restart: unless-stopped
+  bazarr-anime:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr-anime
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Bazarr (Anime):/config
+      - /home/server/media-server/Storage/Media/Anime (Movies):/movies
+      - /home/server/media-server/Storage/Media/Anime (Series):/tv
+    ports:
+      - "5332:6767"
+    restart: unless-stopped
+  bazarr-children_n_family:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr-children_n_family
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=Europe/Warsaw
+    volumes:
+      - /home/server/media-server/Configurations/Bazarr (Children & Family):/config
+      - /home/server/media-server/Storage/Media/Children & Family (Movies):/movies
+      - /home/server/media-server/Storage/Media/Children & Family (Series):/tv
+    ports:
+      - "5333:6767"
+    restart: unless-stopped

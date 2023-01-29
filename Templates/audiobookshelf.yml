@@ -1,0 +1,17 @@
+---
+version: "3.1"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: audiobookshelf
+    environment:
+      - AUDIOBOOKSHELF_UID=13009
+      - AUDIOBOOKSHELF_GID=13000
+    volumes:
+      - /home/server/media-server/Configurations/AudiobookShelf:/config
+      - /home/server/media-server/Configurations/AudiobookShelf/metadata:/metadata
+      - /home/server/media-server/Storage/Audiobooks & Podcasts/Audiobooks:/audiobooks
+      - /home/server/media-server/Storage/Audiobooks & Podcasts/Podcasts:/podcasts
+    ports:
+      - "5131:80"
+    restart: unless-stopped
